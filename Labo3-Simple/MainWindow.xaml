@@ -1,0 +1,92 @@
+﻿<Window x:Class="Labo3_Simple.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Labo3_Simple"
+        xmlns:model="clr-namespace:Labo3_Simple.Model"
+        xmlns:viewModel="clr-namespace:Labo3_Simple.ViewModel"
+        xmlns:infrastructure="clr-namespace:Labo3_Simple.Infrastructure"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance viewModel:MainViewModel, IsDesignTimeCreatable=True}">
+    <Grid>
+        <Grid.Resources>
+            <infrastructure:FormeTypeToNameConverter x:Key="FormeTypeToNameConverter"/>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <ToolBar Grid.Column="0" Grid.Row="0" >
+            <Button FontFamily="Segoe UI Symbol" FontSize="24" Content="&#xe20d;"
+                    Command="{Binding AddFormeCommand}"
+                    CommandParameter="{x:Type model:Carre}"/>
+            <Button FontFamily="Segoe UI Symbol" FontSize="24" Content="&#xe147;"
+                    Command="{Binding AddFormeCommand}"
+                    CommandParameter="{x:Type model:Rectangle}"/>
+            <Button FontFamily="Segoe UI Symbol" FontSize="24" Content="&#xe236;"
+                    Command="{Binding AddFormeCommand}"
+                    CommandParameter="{x:Type model:Cercle}"/>
+        </ToolBar>
+
+        <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" 
+                  ItemsSource="{Binding Context.Items }"
+                  SelectedItem="{Binding SelectedForme}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="150"
+                                    DisplayMemberBinding="{Binding Converter={StaticResource FormeTypeToNameConverter}}" />
+                    <GridViewColumn Header="X" Width="80"
+                                    DisplayMemberBinding="{Binding PointAccroche.X}"/>
+                    <GridViewColumn Header="Y" Width="80"
+                                    DisplayMemberBinding="{Binding PointAccroche.Y}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Grid.Row="1" Grid.Column="0" Content="{Binding SelectedForme}" />
+
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Coordonées : " Margin="0 0 15 0"/>
+                <TextBox Text="{Binding SelectedForme.PointAccroche.X}" Margin="0 0 15 0"/>
+                <TextBox Text="{Binding SelectedForme.PointAccroche.Y}" Margin="0 0 5 0"/>
+            </StackPanel>
+
+            <ContentControl Content="{Binding Path=SelectedForme}">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type viewModel:CarreWrapper}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Côté : "  Margin="0 0 15 0"/>
+                            <TextBox Text="{Binding Longueur}" />
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:CercleWrapper}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Rayon : "  Margin="0 0 15 0"/>
+                            <TextBox Text="{Binding Rayon}" />
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:RectangleWrapper}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Longueur : " Margin="0 0 15 0"/>
+                            <TextBox Text="{Binding Longueur}" Margin="0 0 15 0"/>
+                            <TextBlock Text="Largeur : " Margin="0 0 15 0"/>
+                            <TextBox Text="{Binding Largeur}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
+        </StackPanel>
+
+    </Grid>
+</Window>
