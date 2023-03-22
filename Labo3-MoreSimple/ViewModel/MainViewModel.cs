@@ -8,17 +8,6 @@ namespace Labo3_MoreSimple.ViewModel
 {
     public class MainViewModel : BindableBase
     {
-        private string _listName;
-        public string ListName
-        {
-            get => _listName;
-            set
-            {
-                _listName = value;
-                OnPropertyChanged();
-            }
-        }
-
         private FormeWrapper _selectedForme;
         public ObservableCollection<FormeWrapper> Items { get; set; }
 
@@ -33,13 +22,27 @@ namespace Labo3_MoreSimple.ViewModel
             }
         }
 
+        private string myTitle;
+
+        public string MyTitle
+        {
+            get { return myTitle; }
+            set
+            {
+                if( myTitle == value ) return;
+                myTitle = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
         public ICommand AddCarreCommand { get; set; }
         public ICommand AddCercleCommand { get; set; }
         public ICommand AddRectangleCommand { get; set; }
 
         public MainViewModel()
         {
-            ListName = "DefaultName";
+            MyTitle = DateTime.Now.ToShortTimeString();
             Items = new ObservableCollection<FormeWrapper>();
             AddCarreCommand = new DelegateCommand(AddCarre);
             AddCercleCommand = new DelegateCommand(AddCercle);

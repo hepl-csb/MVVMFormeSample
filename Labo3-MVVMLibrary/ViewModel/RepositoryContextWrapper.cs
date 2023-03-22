@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Labo3_Simple.Infrastructure;
-using Labo3_Simple.Model;
+using Labo3_MVVMLibrary.Infrastructure;
+using Labo3_MVVMLibrary.Model;
 
-namespace Labo3_Simple.ViewModel
+namespace Labo3_MVVMLibrary.ViewModel
 {
     public class RepositoryContextWrapper : WrapperBase<RepositoryContext>
     {

@@ -33,9 +33,10 @@
                     Command="{Binding AddRectangleCommand}"/>
             <Button FontFamily="Segoe UI Symbol" FontSize="24" Content="&#xe236;"
                     Command="{Binding AddCercleCommand}"/>
-            <TextBox Text="{Binding ListName, Mode=TwoWay
-                        , UpdateSourceTrigger=PropertyChanged}"/>
         </ToolBar>
+
+        <Label Grid.Column="1" 
+               Content="{Binding MyTitle}"/>
 
         <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" 
                   ItemsSource="{Binding Items }"

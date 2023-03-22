@@ -21,6 +21,6 @@ namespace ViewModel.Formes
             }
         }
 
-        public override double Area => Math.PI * Math.Sqrt(Rayon);
+        public override double Area => Math.PI * Rayon * Rayon;
     }
 }

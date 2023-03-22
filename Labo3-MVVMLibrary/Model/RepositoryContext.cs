@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Labo3_Simple.Model
+namespace Labo3_MVVMLibrary.Model
 {
     public class RepositoryContext
     {

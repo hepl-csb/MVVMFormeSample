@@ -1,7 +1,7 @@
 ﻿using System;
-using Labo3_Simple.Model;
+using Labo3_MVVMLibrary.Model;
 
-namespace Labo3_Simple.ViewModel
+namespace Labo3_MVVMLibrary.ViewModel
 {
     public class CercleWrapper : FormeWrapper<Cercle>
     {
@@ -21,6 +21,6 @@ namespace Labo3_Simple.ViewModel
             }
         }
 
-        public override double Area => Math.PI * Rayon * Rayon;
+        public override double Area => Math.PI * Math.Sqrt(Rayon);
     }
 }

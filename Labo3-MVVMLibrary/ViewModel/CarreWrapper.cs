@@ -1,7 +1,7 @@
 ﻿using System;
-using Labo3_Simple.Model;
+using Labo3_MVVMLibrary.Model;
 
-namespace Labo3_Simple.ViewModel
+namespace Labo3_MVVMLibrary.ViewModel
 {
     public class CarreWrapper : FormeWrapper<Carre>
     {
@@ -21,6 +21,6 @@ namespace Labo3_Simple.ViewModel
             }
         }
 
-        public override double Area => Longueur * Longueur;
+        public override double Area => Math.Sqrt(Longueur);
     }
 }

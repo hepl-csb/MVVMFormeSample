@@ -5,8 +5,6 @@ namespace ViewModel.Formes
 {
     public class CarreWrapper : FormeWrapper<Carre>, ICarre
     {
-        private string _couleur;
-
         public CarreWrapper(Carre carre) : base(carre)
         {
         }
@@ -25,7 +23,7 @@ namespace ViewModel.Formes
 
         public string Couleur
         {
-            get => _couleur;
+            get => Content.Couleur;
             set
             {
                 if (value == Content.Couleur) return;
@@ -34,6 +32,17 @@ namespace ViewModel.Formes
             }
         }
 
-        public override double Area => Math.Sqrt(Longueur);
+        public string Course
+        {
+            get => Content.Course;
+            set
+            {
+                if (value == Content.Course) return;
+                Content.Course = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public override double Area => Longueur*Longueur;
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using Labo3_MoreSimple.ViewModel;
 
-namespace Labo3_MoreSimple.Infrastructure
+namespace Labo3_MVVMLibrary.Infrastructure
 {
     public class FormeTypeToNameConverter : IValueConverter 
     {

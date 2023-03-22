@@ -1,0 +1,38 @@
+﻿<Window x:Class="MVVMSample.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMSample"
+        xmlns:viewModel="clr-namespace:MVVMSample.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel, IsDesignTimeCreatable=True}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid Grid.Column="0" ItemsSource="{Binding Items}" 
+                  SelectedItem="{Binding SelectedPersonne}"/>
+        
+        <StackPanel Grid.Column="1">
+            <Label Content="FirstName"/>
+            <TextBox Text="{Binding SelectedPersonne.FirstName,UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="LastName"/>
+            <TextBox Text="{Binding SelectedPersonne.LastName, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Email"/>
+            <TextBox Text="{Binding SelectedPersonne.Email, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Phone"/>
+            <TextBox Text="{Binding SelectedPersonne.Phone, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="BirthDate"/>
+            <DatePicker SelectedDate="{Binding SelectedPersonne.BirthDate, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Age"/>
+            <Label Content="{Binding SelectedPersonne.Age}"/>
+
+            <Button Margin="0 10 0 0" Content="Add"
+                    Command="{Binding AddCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,12 +1,10 @@
-﻿using Infrastructure;
+﻿using System;
 
-namespace Model
+namespace Labo3_MVVMLibrary.Model
 {
-    public class Carre :Forme, IEstDans, ISommets, IComparable, ICarre
+    public class Carre : Forme, IEstDans, ISommets, IComparable
     {
         public int Longueur { get; set; }
-        public string Couleur { get; set; }
-        public string Course { get; set; }
 
         public Carre() : this(new Coordonnees(0, 0), 0)
         {
@@ -33,12 +31,7 @@ namespace Model
             Console.WriteLine($"Carré de longueur {Longueur} accroché au point {this.pointAccroche}\n");
         }
 
-        bool IEstDans.CoordonneeEstDans(ICoordonnees p)
-        {
-            return this.CoordonneeEstDans(p);
-        }
-
-        public bool CoordonneeEstDans(ICoordonnees p)
+        public bool CoordonneeEstDans(Coordonnees p)
         {
             return p.X >= this.pointAccroche.X && p.X <= this.pointAccroche.X + Longueur && p.Y >= this.pointAccroche.Y && p.Y <= this.pointAccroche.Y + Longueur;
             //return p.X >= _pointAccroche.X && p.X <= _pointAccroche.X + longueur && p.Y <= _pointAccroche.Y && p.Y >= _pointAccroche.Y - longueur;
