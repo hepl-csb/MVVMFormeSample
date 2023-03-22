@@ -6,7 +6,7 @@ namespace ViewModel.Formes
     public class CarreWrapper : FormeWrapper<Carre>, ICarre
     {
         public CarreWrapper(Carre carre) : base(carre)
-        {
+        { 
         }
 
         public int Longueur
